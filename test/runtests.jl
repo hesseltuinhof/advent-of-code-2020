@@ -17,3 +17,26 @@ end
     @test AdventOfCode.validate_password.(zip(policies_toboggan, passwords)) == [true, false, false, false]
     @test day02() == (607, 321)
 end
+
+@testset "day03" begin
+    map = """
+          ..##.......
+          #...#...#..
+          .#....#..#.
+          ..#.#...#.#
+          .#...##..#.
+          ..#.##.....
+          .#.#.#....#
+          .#........#
+          #.##...#...
+          #...##....#
+          .#..#...#.#"""
+    multiple_slopes = 1
+    for args  in [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+        multiple_slopes *= AdventOfCode.count_trees(IOBuffer(map), args...)
+    end
+
+    @test AdventOfCode.count_trees(IOBuffer(map), 3, 1) == 7
+    @test multiple_slopes == 336
+    @test day03() == (274, 6050183040)
+end
