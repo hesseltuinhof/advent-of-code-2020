@@ -96,3 +96,10 @@ end
     @test AdventOfCode.seat_id.(boardingpass) == [567, 119, 820]
     @test day05() == (880, 731)
 end
+
+@testset "day06" begin
+    groups =  ["abc", "a\nb\nc", "ab\nac", "a\na\na\na", "b"]
+    @test AdventOfCode.any_yes.(groups) == [3, 3, 3, 1, 1]
+    @test AdventOfCode.every_yes.(groups) == [3, 0, 1, 1, 1]
+    @test day06() == (7027, 3579)
+end
