@@ -88,3 +88,11 @@ end
     @test AdventOfCode.validate_passport_values.(AdventOfCode.parse_passport(IOBuffer(invalid))) == [false, false, false, false]
     @test day04() == (206, 123)
 end
+
+@testset "day05" begin
+    boardingpass = ["BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"]
+    @test AdventOfCode.decode_row("FBFBBFF") == 44
+    @test AdventOfCode.decode_column("RLR") == 5
+    @test AdventOfCode.seat_id.(boardingpass) == [567, 119, 820]
+    @test day05() == (880, 731)
+end
