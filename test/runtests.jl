@@ -119,5 +119,20 @@ end
     @test length(bags) == 9
     @test AdventOfCode.shiny_gold("dark orange", bags) == true
     @test AdventOfCode.count_shiny_gold(bags) == 4
+end
 
+@testset "day08" begin
+    boot = """
+           nop +0
+           acc +1
+           jmp +4
+           acc +3
+           jmp -3
+           acc -99
+           acc +1
+           jmp -4
+           acc +6"""
+    @test AdventOfCode.accumulator(AdventOfCode.parse_bootcode(IOBuffer(boot))) == (5, false)
+    @test AdventOfCode.repair(AdventOfCode.parse_bootcode(IOBuffer(boot))) == 8
+    @test AdventOfCode.day08() == (1675, 1532)
 end
