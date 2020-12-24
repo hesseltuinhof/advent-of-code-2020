@@ -136,3 +136,31 @@ end
     @test AdventOfCode.repair(AdventOfCode.parse_bootcode(IOBuffer(boot))) == 8
     @test AdventOfCode.day08() == (1675, 1532)
 end
+
+@testset "day09" begin
+    encoding = """
+               135
+               20
+               15
+               25
+               47
+               40
+               62
+               55
+               65
+               95
+               102
+               117
+               150
+               182
+               127
+               219
+               299
+               277
+               309
+               576"""
+    @test AdventOfCode.validate_encoding(40, [35, 20, 15, 25, 47]) == true
+    @test AdventOfCode.weakness(AdventOfCode.parse_encoding(IOBuffer(encoding)), 5) == 127
+    @test AdventOfCode.contiguous(AdventOfCode.parse_encoding(IOBuffer(encoding)), 127) == [15, 25, 47, 40]
+    @test day09() == (138879426, 23761694)
+end
