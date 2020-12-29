@@ -164,3 +164,11 @@ end
     @test AdventOfCode.contiguous(AdventOfCode.parse_encoding(IOBuffer(encoding)), 127) == [15, 25, 47, 40]
     @test day09() == (138879426, 23761694)
 end
+
+@testset "day10" begin
+    adapter =[28, 33, 18, 42, 31, 14, 46, 20, 48, 47, 24, 23, 49, 45, 19,
+              38, 39, 11, 1, 32, 25, 35, 8, 17, 7, 9, 4, 2, 34, 10, 3]
+    @test AdventOfCode.distribution(adapter) == (22, 10)
+    @test AdventOfCode.distinct(adapter) == 19208
+    @test day10() == (1885, 2024782584832)
+end
